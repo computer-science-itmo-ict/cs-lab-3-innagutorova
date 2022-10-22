@@ -1,6 +1,6 @@
 #!/bin/bash
 export LANG=en_US.UTF-8
-start=$1;
+start=PWD;
 function tree {
     for dir in *
     do
