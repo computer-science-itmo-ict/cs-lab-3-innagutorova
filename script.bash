@@ -19,10 +19,12 @@ function tree {
                 step=$[$step+1]
             done
             if [ $dir = ${subdirs[i]} ] ; then
-                printf "\u2514\u2500\u2500\u0020$dir\n" 
+                printf "\u2514\u2500\u2500\u0020$dir"
+                printf "\n" 
                 last=1
             else
-                printf "\u251c\u2500\u2500\u0020$dir\n"
+                printf "\u251c\u2500\u2500\u0020$dir"
+                printf "\n" 
                 last=0
             fi
             if cd "$dir" ; then
@@ -48,10 +50,12 @@ function tree {
                  printf "\u0020\u0020\u0020\u0020"
              fi
              if [ $dir = ${subdirs[i]} ] ; then
-                printf "\u2514\u2500\u2500\u0020$dir\n"
+                printf "\u2514\u2500\u2500\u0020$dir"
+                printf "\n" 
                 last=0
              else
-                printf "\u251c\u2500\u2500\u0020$dir\n"
+                printf "\u251c\u2500\u2500\u0020$dir"
+                printf "\n" 
              fi
              files=$[$files+1]
          fi
