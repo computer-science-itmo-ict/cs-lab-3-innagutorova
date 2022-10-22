@@ -67,6 +67,8 @@ end=0
 deep=0
 dirs=0
 files=0
+last=0
+step=0
 while [ "$end" != 1 ]
 do
     tree "$1"
