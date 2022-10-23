@@ -1,6 +1,6 @@
 #!/bin/bash
 export LANG=en_US.UTF-8
-function tree {
+function tree () {
     for dir in *
     do
         i=0
@@ -88,3 +88,4 @@ if [ $files != 1 ] ; then
 else
     echo $files "file"
 fi
+
