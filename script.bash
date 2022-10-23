@@ -1,6 +1,5 @@
 #!/bin/bash
 export LANG=en_US.UTF-8
-start=$PWD;
 function tree {
     for dir in *
     do
@@ -19,17 +18,15 @@ function tree {
                 step=$[$step+1]
             done
             if [ $dir = ${subdirs[i]} ] ; then
-                printf "\u2514\u2500\u2500\u0020$dir"
-                printf "\n" 
+                printf "\u2514\u2500\u2500\u0020$dir\n"
                 last=1
             else
-                printf "\u251c\u2500\u2500\u0020$dir"
-                printf "\n" 
+                printf "\u251c\u2500\u2500\u0020$dir\n"
                 last=0
             fi
             if cd "$dir" ; then
                 deep=$[$deep+1]
-                tree "$1"
+                tree
                 dirs=$[$dirs+1]
             fi
          else
@@ -50,12 +47,10 @@ function tree {
                  printf "\u0020\u0020\u0020\u0020"
              fi
              if [ $dir = ${subdirs[i]} ] ; then
-                printf "\u2514\u2500\u2500\u0020$dir"
-                printf "\n" 
+                printf "\u2514\u2500\u2500\u0020$dir\n"
                 last=0
              else
-                printf "\u251c\u2500\u2500\u0020$dir"
-                printf "\n" 
+                printf "\u251c\u2500\u2500\u0020$dir\n"
              fi
              files=$[$files+1]
          fi
@@ -66,7 +61,12 @@ function tree {
     fi
     deep=$[$deep-1]
 }
-echo "."
+if [ $#=0 ]; then
+	echo "."
+else
+	cd $1
+	echo $@
+fi
 end=0
 deep=0
 dirs=0
@@ -75,8 +75,7 @@ last=0
 step=0
 while [ "$end" != 1 ]
 do
-    tree "$1"
-    cd $start
+    tree
 done
 printf "\n"
 if [ $dirs != 1 ] ; then
