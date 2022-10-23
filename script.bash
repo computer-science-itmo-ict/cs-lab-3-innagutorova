@@ -26,7 +26,7 @@ function tree () {
             fi
             if cd "$dir" ; then
                 deep=$[$deep+1]
-                tree
+                tree "$1"
                 dirs=$[$dirs+1]
             fi
          else
@@ -61,7 +61,7 @@ function tree () {
     fi
     deep=$[$deep-1]
 }
-if [ $#=0 ]; then
+if [ $# = 0 ]; then
 	echo "."
 else
 	cd $1
@@ -75,7 +75,7 @@ last=0
 step=0
 while [ "$end" != 1 ]
 do
-    tree
+    tree $1
 done
 printf "\n"
 if [ $dirs != 1 ] ; then
